@@ -1,101 +1,119 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_v_test/shared/colors.dart';
+import 'package:flutter_v_test/widget/text_copy_right.dart';
+import 'package:flutter_v_test/widget/text_field_default.dart';
+import 'package:flutter_v_test/widget/text_field_login_password.dart';
+import 'package:flutter_v_test/widget/button_primary.dart';
 
-class LoginScreen extends StatelessWidget {
+import '../shared/fonts.dart';
+import '../widget/text_switch_login_register.dart';
+
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+    var _isVisible = false;
+
+    void changeVisibility() {
+      setState(() {
+        _isVisible = !_isVisible;
+      });
+    }
+
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding:
-              const EdgeInsets.only(left: 20, right: 20, top: 80, bottom: 40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Hai, Selamat Datang'),
-              const SizedBox(
-                height: 4,
-              ),
-              Text('Silahkan login untuk melanjutkan'),
-              Row(
-                children: [
-                  const Spacer(),
-                  Image.asset(
-                    'assets/images/img_login_and_register_banner.png',
-                    height: 218,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              Text('Email'),
-              TextField(
-                decoration:
-                    const InputDecoration(hintText: 'Masukkan email anda'),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              Row(
-                children: [
-                  Text('Password'),
-                  Spacer(),
-                  Text('Lupa Password anda ?'),
-                ],
-              ),
-              TextField(
-                decoration: const InputDecoration(
-                  hintText: 'Masukkan password anda',
-                  suffixIcon: Icon(
-                    Icons.visibility_outlined,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding:
+                const EdgeInsets.only(left: 20, right: 20, top: 80, bottom: 40),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Wrap(
+                  direction: Axis.horizontal,
+                  children: [
+                    Text(
+                      'Hai,',
+                      style: gilroyMedium.copyWith(
+                        fontSize: 28,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    Text(
+                      'Selamat Datang',
+                      style: gilroyBold.copyWith(
+                        fontSize: 28,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Text(
+                  'Silahkan login untuk melanjutkan',
+                  style: proximaSemiBold.copyWith(
+                    fontSize: 12,
+                    color: colorLightBlue,
                   ),
                 ),
-                obscureText: true,
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
+                Row(
+                  children: [
+                    const Spacer(),
+                    Image.asset(
+                      'assets/images/img_login_and_register_banner.png',
+                      height: 218,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                TextFieldDefault(
+                  label: 'Email',
+                  hint: 'Masukkan email anda',
+                  controller: emailController,
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                TextFieldLoginPassword(
+                  label: 'Password',
+                  hint: 'Masukkan password anda',
+                  controller: passwordController,
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                PrimaryButton(
+                  label: 'Login',
                   onPressed: () {},
-                  child: const Text('Login'),
+                  iconEnd: Icons.arrow_forward,
                 ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Belum punya akun ?'),
-                  const SizedBox(
-                    width: 6,
-                  ),
-                  Text('Daftar Sekarang'),
-                ],
-              ),
-              Expanded(
-                child: Align(
-                  alignment: FractionalOffset.bottomCenter,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/icons/ic_copyright.png',
-                        width: 16,
-                      ),
-                      const SizedBox(
-                        width: 4,
-                      ),
-                      const Text('SILK. all right reserved.'),
-                    ],
-                  ),
+                const SizedBox(
+                  height: 30,
                 ),
-              )
-            ],
+                TextSwitchLoginRegister(
+                  labelQuestion: 'Belum punya akun ?',
+                  labelSwitch: 'Daftar Sekarang',
+                  onPressed: () {},
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                const TextCopyRight(),
+              ],
+            ),
           ),
         ),
       ),
