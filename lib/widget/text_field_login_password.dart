@@ -79,10 +79,11 @@ class _TextFieldLoginPasswordState extends State<TextFieldLoginPassword> {
             controller: widget.controller,
             decoration: InputDecoration(
               suffixIcon: IconButton(
-                icon: Icon(
+                icon: Image.asset(
                   _isVisible
-                      ? Icons.visibility_outlined
-                      : Icons.visibility_off_outlined,
+                      ? 'assets/icons/ic_visibility.png'
+                      : 'assets/icons/ic_visibility_off.png',
+                  width: 20,
                 ),
                 iconSize: 20,
                 onPressed: _changeVisibility,
