@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import '../shared/colors.dart';
 import '../shared/fonts.dart';
 
-class PrimaryButton extends StatelessWidget {
+class ButtonPrimary extends StatelessWidget {
   IconData? iconStart;
   IconData? iconEnd;
   String label;
   Function() onPressed;
-  PrimaryButton({
+  ButtonPrimary({
     super.key,
     this.iconStart,
     this.iconEnd,

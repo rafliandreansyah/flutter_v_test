@@ -105,7 +105,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const SizedBox(
                   height: 40,
                 ),
-                PrimaryButton(
+                ButtonPrimary(
                   label: 'Register',
                   onPressed: () {},
                   iconEnd: Icons.arrow_forward,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_v_test/screen/home_screen.dart';
 import 'package:flutter_v_test/screen/register_screen.dart';
 import 'package:flutter_v_test/shared/colors.dart';
 import 'package:flutter_v_test/widget/text_copy_right.dart';
@@ -54,9 +55,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 40,
                 ),
-                PrimaryButton(
+                ButtonPrimary(
                   label: 'Login',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(
+                      HomeScreen.route,
+                    );
+                  },
                   iconEnd: Icons.arrow_forward,
                 ),
                 const SizedBox(
