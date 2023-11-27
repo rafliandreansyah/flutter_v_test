@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_v_test/screen/login_screen.dart';
+import 'package:flutter_v_test/screen/register_screen.dart';
 import 'package:flutter_v_test/shared/colors.dart';
 
 void main() {
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const LoginScreen(),
+        RegisterScreen.route: (context) => const RegisterScreen(),
       },
     );
   }
