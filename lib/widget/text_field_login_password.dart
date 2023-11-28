@@ -4,10 +4,10 @@ import '../shared/colors.dart';
 import '../shared/fonts.dart';
 
 class TextFieldLoginPassword extends StatefulWidget {
-  String label;
-  String hint;
-  TextEditingController controller;
-  TextFieldLoginPassword({
+  final String label;
+  final String hint;
+  final TextEditingController controller;
+  const TextFieldLoginPassword({
     super.key,
     required this.label,
     required this.hint,

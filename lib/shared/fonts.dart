@@ -27,3 +27,8 @@ TextStyle proximaSemiBold = const TextStyle(
   fontFamily: "ProximaNova",
   fontWeight: FontWeight.w600,
 );
+
+TextStyle proximaBold = const TextStyle(
+  fontFamily: "ProximaNova",
+  fontWeight: FontWeight.w700,
+);

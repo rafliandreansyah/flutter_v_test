@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_v_test/shared/colors.dart';
 import 'package:flutter_v_test/shared/fonts.dart';
+import 'package:flutter_v_test/widget/button_category.dart';
 import 'package:flutter_v_test/widget/button_primary.dart';
+import 'package:flutter_v_test/widget/card_product.dart';
+import 'package:flutter_v_test/widget/rating.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -351,6 +354,82 @@ class HomeScreen extends StatelessWidget {
       );
     }
 
+    Widget SearchAndFilter() {
+      return Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(
+              16,
+            ),
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withAlpha(10),
+                    spreadRadius: 1,
+                    blurRadius: 8,
+                    offset: const Offset(
+                      0,
+                      8,
+                    ),
+                  )
+                ]),
+            child: Image.asset(
+              'assets/icons/ic_filter.png',
+            ),
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.only(
+                left: 20,
+                right: 8,
+              ),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(
+                    50,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withAlpha(10),
+                      spreadRadius: 5,
+                      blurRadius: 10,
+                      offset: const Offset(
+                        0,
+                        8,
+                      ),
+                    )
+                  ]),
+              child: TextField(
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    onPressed: () {},
+                    icon: Image.asset(
+                      'assets/icons/ic_search.png',
+                      width: 20,
+                    ),
+                    enableFeedback: false,
+                  ),
+                  hintText: 'Search',
+                  hintStyle: proximaRegular.copyWith(
+                    fontSize: 16,
+                    color: colorLightGrey,
+                  ),
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          )
+        ],
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -382,6 +461,7 @@ class HomeScreen extends StatelessWidget {
             16,
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Card1(),
               const SizedBox(
@@ -395,6 +475,73 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 40,
               ),
+              SearchAndFilter(),
+              const SizedBox(
+                height: 40,
+              ),
+              SizedBox(
+                width: double.infinity,
+                height: 35,
+                child: ListView(
+                  clipBehavior: Clip.none,
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    ButtonCategory(
+                      label: 'All Product',
+                      isSelected: true,
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    ButtonCategory(
+                      label: 'Layanan Kesehatan',
+                      isSelected: false,
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    ButtonCategory(
+                      label: 'Alat Kesehatan',
+                      isSelected: false,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                height: 195,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  clipBehavior: Clip.none,
+                  children: const [
+                    CardProduct(),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    CardProduct(),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    CardProduct(),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Text(
+                'Pilih Tipe Layanan Kesehatan Anda',
+                style: gilroySemiBold.copyWith(
+                  fontSize: 16,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(
+                height: 25,
+              )
             ],
           ),
         ),

@@ -4,11 +4,11 @@ import '../shared/colors.dart';
 import '../shared/fonts.dart';
 
 class ButtonPrimary extends StatelessWidget {
-  IconData? iconStart;
-  IconData? iconEnd;
-  String label;
-  Function() onPressed;
-  ButtonPrimary({
+  final IconData? iconStart;
+  final IconData? iconEnd;
+  final String label;
+  final Function() onPressed;
+  const ButtonPrimary({
     super.key,
     this.iconStart,
     this.iconEnd,

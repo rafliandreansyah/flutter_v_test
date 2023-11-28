@@ -4,12 +4,12 @@ import '../shared/colors.dart';
 import '../shared/fonts.dart';
 
 class TextFieldDefault extends StatefulWidget {
-  String label;
-  String hint;
-  TextEditingController controller;
-  bool? isPassword;
+  final String label;
+  final String hint;
+  final TextEditingController controller;
+  final bool? isPassword;
 
-  TextFieldDefault({
+  const TextFieldDefault({
     super.key,
     required this.label,
     required this.hint,

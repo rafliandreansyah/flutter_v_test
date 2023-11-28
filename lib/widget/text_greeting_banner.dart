@@ -3,8 +3,8 @@ import 'package:flutter_v_test/shared/colors.dart';
 import 'package:flutter_v_test/shared/fonts.dart';
 
 class TextGreetingBanner extends StatelessWidget {
-  String greetingInfo;
-  TextGreetingBanner({
+  final String greetingInfo;
+  const TextGreetingBanner({
     super.key,
     required this.greetingInfo,
   });

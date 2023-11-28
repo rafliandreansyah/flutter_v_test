@@ -4,10 +4,10 @@ import '../shared/colors.dart';
 import '../shared/fonts.dart';
 
 class TextSwitchLoginRegister extends StatelessWidget {
-  String labelQuestion;
-  String labelSwitch;
-  Function() onPressed;
-  TextSwitchLoginRegister({
+  final String labelQuestion;
+  final String labelSwitch;
+  final Function() onPressed;
+  const TextSwitchLoginRegister({
     super.key,
     required this.labelQuestion,
     required this.labelSwitch,
