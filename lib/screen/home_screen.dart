@@ -5,6 +5,7 @@ import 'package:flutter_v_test/widget/%20banner_notification.dart';
 import 'package:flutter_v_test/widget/button_category.dart';
 import 'package:flutter_v_test/widget/card_product.dart';
 import 'package:flutter_v_test/widget/card_service_location.dart';
+import 'package:flutter_v_test/widget/toggle_custom.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,38 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<bool> isSelected = [true, false];
-  List<String> typeTitle = ['Satuan', 'Paket Pemeriksaan'];
-
-  List<Widget> generateServiceType() {
-    List<Widget> serviceWidget = [];
-    for (var i = 0; i < isSelected.length; i++) {
-      serviceWidget.add(
-        Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 8,
-          ),
-          decoration: BoxDecoration(
-            color: isSelected[i] ? colorSecondary : null,
-            borderRadius: BorderRadius.circular(50),
-          ),
-          child: Text(
-            typeTitle[i],
-            style: isSelected[i]
-                ? proximaSemiBold.copyWith(
-                    fontSize: 14,
-                  )
-                : proximaRegular.copyWith(
-                    fontSize: 14,
-                    color: colorPrimary,
-                  ),
-          ),
-        ),
-      );
-    }
-
-    return serviceWidget;
-  }
+  List<String> titles = ['Satuan', 'Paket Pemeriksaan'];
 
   @override
   Widget build(BuildContext context) {
@@ -583,44 +553,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(
                     height: 25,
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(
-                        100,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withAlpha(10),
-                          spreadRadius: 5,
-                          blurRadius: 8,
-                          offset: const Offset(
-                            0,
-                            8,
-                          ),
-                        ),
-                      ],
-                    ),
-                    child: ToggleButtons(
-                      borderWidth: 0,
-                      selectedBorderColor: Colors.transparent,
-                      fillColor: Colors.transparent,
-                      borderColor: Colors.transparent,
-                      splashColor: Colors.transparent,
-                      onPressed: (index) {
-                        setState(() {
-                          // The button that is tapped is set to true, and the others to false.
-                          for (int i = 0; i < isSelected.length; i++) {
-                            isSelected[i] = i == index;
-                          }
-                        });
-                      },
-                      isSelected: isSelected,
-                      children: generateServiceType(),
-                    ),
+                  ToggleCustom(
+                    isSelected: isSelected,
+                    titles: titles,
                   ),
                   const SizedBox(
                     height: 40,
