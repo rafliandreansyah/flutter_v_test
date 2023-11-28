@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_v_test/shared/colors.dart';
 import 'package:flutter_v_test/shared/fonts.dart';
 import 'package:flutter_v_test/widget/button_category.dart';
-import 'package:flutter_v_test/widget/button_primary.dart';
 import 'package:flutter_v_test/widget/card_product.dart';
-import 'package:flutter_v_test/widget/rating.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

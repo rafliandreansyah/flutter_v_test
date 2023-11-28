@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_v_test/screen/home_screen.dart';
 import 'package:flutter_v_test/screen/register_screen.dart';
-import 'package:flutter_v_test/shared/colors.dart';
 import 'package:flutter_v_test/widget/text_copy_right.dart';
 import 'package:flutter_v_test/widget/text_field_default.dart';
 import 'package:flutter_v_test/widget/text_field_login_password.dart';
 import 'package:flutter_v_test/widget/button_primary.dart';
 import 'package:flutter_v_test/widget/text_greeting_banner.dart';
 
-import '../shared/fonts.dart';
 import '../widget/text_switch_login_register.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -33,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             child: Column(
               children: [
-                TextGreetingBanner(
+                const TextGreetingBanner(
                   greetingInfo: 'Silahkan login untuk melanjutkan',
                 ),
                 const SizedBox(
