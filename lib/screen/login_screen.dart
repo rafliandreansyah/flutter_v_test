@@ -87,6 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         hint: 'Masukkan email anda',
                         controller: emailController,
                         errorMsg: emailError,
+                        keyboardType: TextInputType.emailAddress,
                       ),
                       const SizedBox(
                         height: 40,

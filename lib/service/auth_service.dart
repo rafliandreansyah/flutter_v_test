@@ -12,7 +12,8 @@ class AuthService {
       return LoginResponse.fromJson(response.data);
     } on DioException catch (e) {
       if (e.response != null) {
-        throw Exception(e.response?.data);
+        final errResponse = LoginResponse.fromJson(e.response?.data);
+        throw Exception(errResponse.error);
       } else {
         throw Exception(e.message);
       }

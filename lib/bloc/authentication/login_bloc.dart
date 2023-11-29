@@ -36,7 +36,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
             emit(const LoginError('token is empty'));
           }
         } catch (err) {
-          emit(LoginError(err.toString()));
+          emit(LoginError(err.toString().replaceAll('Exception: ', '')));
         }
       } else if (event is CheckLoginEvent) {
         String? token = pref.getString(tokenPrefKey);

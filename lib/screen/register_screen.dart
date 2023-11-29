@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_v_test/widget/button_primary.dart';
 import 'package:flutter_v_test/widget/text_copy_right.dart';
 import 'package:flutter_v_test/widget/text_field_default.dart';
@@ -33,7 +34,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             child: Column(
               children: [
-                TextGreetingBanner(
+                const TextGreetingBanner(
                   greetingInfo: 'Silahkan registrasi untuk melanjutkan',
                 ),
                 const SizedBox(
@@ -67,6 +68,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   label: 'No. KTP',
                   hint: 'Masukkan No. KTP anda',
                   controller: idNumberController,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
                 ),
                 const SizedBox(
                   height: 40,
@@ -75,6 +80,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   label: 'Email',
                   hint: 'Masukkan email anda',
                   controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
                 ),
                 const SizedBox(
                   height: 40,
@@ -83,6 +89,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   label: 'No. Telpon',
                   hint: 'Masukkan password anda',
                   controller: phoneNumberController,
+                  keyboardType: TextInputType.phone,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
                 ),
                 const SizedBox(
                   height: 40,

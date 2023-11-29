@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../shared/colors.dart';
 import '../shared/fonts.dart';
@@ -9,6 +10,8 @@ class TextFieldDefault extends StatefulWidget {
   final TextEditingController controller;
   final bool? isPassword;
   final String? errorMsg;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
 
   const TextFieldDefault({
     super.key,
@@ -17,6 +20,8 @@ class TextFieldDefault extends StatefulWidget {
     required this.controller,
     this.isPassword,
     this.errorMsg,
+    this.keyboardType,
+    this.inputFormatters,
   });
 
   @override
@@ -70,6 +75,8 @@ class _TextFieldDefaultState extends State<TextFieldDefault> {
           ),
           child: widget.isPassword != null && widget.isPassword == true
               ? TextField(
+                  keyboardType: widget.keyboardType,
+                  inputFormatters: widget.inputFormatters,
                   obscureText: !_isVisible,
                   controller: widget.controller,
                   decoration: InputDecoration(
@@ -92,6 +99,8 @@ class _TextFieldDefaultState extends State<TextFieldDefault> {
                   ),
                 )
               : TextField(
+                  keyboardType: widget.keyboardType,
+                  inputFormatters: widget.inputFormatters,
                   controller: widget.controller,
                   decoration: InputDecoration(
                     border: InputBorder.none,
