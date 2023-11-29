@@ -7,11 +7,13 @@ class TextFieldLoginPassword extends StatefulWidget {
   final String label;
   final String hint;
   final TextEditingController controller;
+  final String? errorMsg;
   const TextFieldLoginPassword({
     super.key,
     required this.label,
     required this.hint,
     required this.controller,
+    this.errorMsg,
   });
 
   @override
@@ -30,6 +32,7 @@ class _TextFieldLoginPasswordState extends State<TextFieldLoginPassword> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
@@ -97,6 +100,19 @@ class _TextFieldLoginPasswordState extends State<TextFieldLoginPassword> {
             ),
           ),
         ),
+        const SizedBox(
+          height: 4,
+        ),
+        if (widget.errorMsg != null)
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 8,
+            ),
+            child: Text(
+              widget.errorMsg!,
+              style: proximaRegular.copyWith(fontSize: 12, color: Colors.red),
+            ),
+          )
       ],
     );
   }

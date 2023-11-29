@@ -8,6 +8,7 @@ class TextFieldDefault extends StatefulWidget {
   final String hint;
   final TextEditingController controller;
   final bool? isPassword;
+  final String? errorMsg;
 
   const TextFieldDefault({
     super.key,
@@ -15,6 +16,7 @@ class TextFieldDefault extends StatefulWidget {
     required this.hint,
     required this.controller,
     this.isPassword,
+    this.errorMsg,
   });
 
   @override
@@ -101,6 +103,19 @@ class _TextFieldDefaultState extends State<TextFieldDefault> {
                   ),
                 ),
         ),
+        const SizedBox(
+          height: 4,
+        ),
+        if (widget.errorMsg != null)
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 8,
+            ),
+            child: Text(
+              widget.errorMsg!,
+              style: proximaRegular.copyWith(fontSize: 12, color: Colors.red),
+            ),
+          )
       ],
     );
   }
