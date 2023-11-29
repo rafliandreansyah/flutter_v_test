@@ -5,6 +5,7 @@ import 'package:flutter_v_test/widget/%20banner_notification.dart';
 import 'package:flutter_v_test/widget/button_category.dart';
 import 'package:flutter_v_test/widget/card_product.dart';
 import 'package:flutter_v_test/widget/card_service_location.dart';
+import 'package:flutter_v_test/widget/drawer.dart';
 import 'package:flutter_v_test/widget/toggle_custom.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -440,13 +441,8 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     return Scaffold(
+      drawer: const DrawerCustom(),
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.menu,
-          ),
-        ),
         actions: [
           IconButton(
             icon: Image.asset(
