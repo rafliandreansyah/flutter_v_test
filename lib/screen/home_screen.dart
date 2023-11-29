@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_v_test/shared/colors.dart';
 import 'package:flutter_v_test/shared/fonts.dart';
-import 'package:flutter_v_test/widget/%20banner_notification.dart';
 import 'package:flutter_v_test/widget/button_category.dart';
 import 'package:flutter_v_test/widget/card_product.dart';
 import 'package:flutter_v_test/widget/card_service_location.dart';
-import 'package:flutter_v_test/widget/drawer.dart';
 import 'package:flutter_v_test/widget/toggle_custom.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,13 +15,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
   List<bool> isSelected = [true, false];
   List<String> titles = ['Satuan', 'Paket Pemeriksaan'];
 
   @override
   Widget build(BuildContext context) {
-    Widget Card1() {
+    Widget card1() {
       return Stack(
         children: [
           Container(
@@ -159,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
 
-    Widget Card2() {
+    Widget card2() {
       return Stack(
         children: [
           Container(
@@ -262,7 +259,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
 
-    Widget Card3() {
+    Widget card3() {
       return Stack(
         children: [
           Container(
@@ -365,7 +362,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
 
-    Widget SearchAndFilter() {
+    Widget searchAndFilter() {
       return Row(
         children: [
           Container(
@@ -441,162 +438,116 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
 
-    return Scaffold(
-      endDrawer: const DrawerCustom(),
-      key: _key,
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            _key.currentState!.openEndDrawer();
-          },
-          icon: const Icon(
-            Icons.menu,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        card1(),
+        const SizedBox(
+          height: 10,
+        ),
+        card2(),
+        const SizedBox(
+          height: 10,
+        ),
+        card3(),
+        const SizedBox(
+          height: 40,
+        ),
+        searchAndFilter(),
+        const SizedBox(
+          height: 40,
+        ),
+        SizedBox(
+          width: double.infinity,
+          height: 35,
+          child: ListView(
+            clipBehavior: Clip.none,
+            scrollDirection: Axis.horizontal,
+            children: const [
+              ButtonCategory(
+                label: 'All Product',
+                isSelected: true,
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              ButtonCategory(
+                label: 'Layanan Kesehatan',
+                isSelected: false,
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              ButtonCategory(
+                label: 'Alat Kesehatan',
+                isSelected: false,
+              ),
+            ],
           ),
         ),
-        actions: [
-          IconButton(
-            icon: Image.asset(
-              'assets/icons/ic_cart.png',
-              width: 20,
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Image.asset(
-              'assets/icons/ic_new_notification.png',
-              width: 20,
-            ),
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(
-                16,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Card1(),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Card2(),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Card3(),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  SearchAndFilter(),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 35,
-                    child: ListView(
-                      clipBehavior: Clip.none,
-                      scrollDirection: Axis.horizontal,
-                      children: const [
-                        ButtonCategory(
-                          label: 'All Product',
-                          isSelected: true,
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        ButtonCategory(
-                          label: 'Layanan Kesehatan',
-                          isSelected: false,
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        ButtonCategory(
-                          label: 'Alat Kesehatan',
-                          isSelected: false,
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  SizedBox(
-                    height: 195,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      clipBehavior: Clip.none,
-                      children: const [
-                        CardProduct(),
-                        SizedBox(
-                          width: 16,
-                        ),
-                        CardProduct(),
-                        SizedBox(
-                          width: 16,
-                        ),
-                        CardProduct(),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  Text(
-                    'Pilih Tipe Layanan Kesehatan Anda',
-                    style: gilroySemiBold.copyWith(
-                      fontSize: 16,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  ToggleCustom(
-                    isSelected: isSelected,
-                    titles: titles,
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  const CardServiceLocation(
-                    serviceName:
-                        'PCR Swab Test (Drive Thru) Hasil 1 Hari Kerja',
-                    price: 'Rp. 14.000',
-                    lenmarcName: 'Lenmarc Surabaya',
-                    lenmarcLocation: 'Dukuh Pakis, Surabaya',
-                    lenmarcPhoto: 'assets/images/img_location1.png',
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  const CardServiceLocation(
-                    serviceName:
-                        'PCR Swab Test (Drive Thru) Hasil 1 Hari Kerja',
-                    price: 'Rp. 14.000',
-                    lenmarcName: 'Lenmarc Surabaya',
-                    lenmarcLocation: 'Dukuh Pakis, Surabaya',
-                    lenmarcPhoto: 'assets/images/img_location2.png',
-                  ),
-                  const SizedBox(
-                    height: 60,
-                  ),
-                ],
-              ),
-            ),
-            BannerNotification(
-              onPressed: () {},
-            )
-          ],
+        const SizedBox(
+          height: 30,
         ),
-      ),
+        SizedBox(
+          height: 195,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            clipBehavior: Clip.none,
+            children: const [
+              CardProduct(),
+              SizedBox(
+                width: 16,
+              ),
+              CardProduct(),
+              SizedBox(
+                width: 16,
+              ),
+              CardProduct(),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 40,
+        ),
+        Text(
+          'Pilih Tipe Layanan Kesehatan Anda',
+          style: gilroySemiBold.copyWith(
+            fontSize: 16,
+          ),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+        const SizedBox(
+          height: 25,
+        ),
+        ToggleCustom(
+          isSelected: isSelected,
+          titles: titles,
+        ),
+        const SizedBox(
+          height: 40,
+        ),
+        const CardServiceLocation(
+          serviceName: 'PCR Swab Test (Drive Thru) Hasil 1 Hari Kerja',
+          price: 'Rp. 14.000',
+          lenmarcName: 'Lenmarc Surabaya',
+          lenmarcLocation: 'Dukuh Pakis, Surabaya',
+          lenmarcPhoto: 'assets/images/img_location1.png',
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        const CardServiceLocation(
+          serviceName: 'PCR Swab Test (Drive Thru) Hasil 1 Hari Kerja',
+          price: 'Rp. 14.000',
+          lenmarcName: 'Lenmarc Surabaya',
+          lenmarcLocation: 'Dukuh Pakis, Surabaya',
+          lenmarcPhoto: 'assets/images/img_location2.png',
+        ),
+        const SizedBox(
+          height: 60,
+        ),
+      ],
     );
   }
 }

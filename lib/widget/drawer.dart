@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_v_test/bloc/authentication/login_bloc.dart';
 import 'package:flutter_v_test/constant/pref.dart';
 import 'package:flutter_v_test/screen/login_screen.dart';
 import 'package:flutter_v_test/shared/colors.dart';
@@ -7,7 +9,15 @@ import 'package:flutter_v_test/widget/menu_drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DrawerCustom extends StatelessWidget {
-  const DrawerCustom({super.key});
+  final dynamic Function() homeTap;
+  final dynamic Function() profileTap;
+  final dynamic Function() settingTap;
+  const DrawerCustom({
+    super.key,
+    required this.homeTap,
+    required this.profileTap,
+    required this.settingTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +128,19 @@ class DrawerCustom extends StatelessWidget {
                       right: mediaQueryWidth * 0.25,
                     ),
                     child: MenuDrawer(
-                      onTap: () {},
+                      onTap: homeTap,
+                      label: 'Home',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      right: mediaQueryWidth * 0.25,
+                    ),
+                    child: MenuDrawer(
+                      onTap: profileTap,
                       label: 'Profile Saya',
                     ),
                   ),
@@ -130,7 +152,7 @@ class DrawerCustom extends StatelessWidget {
                       right: mediaQueryWidth * 0.25,
                     ),
                     child: MenuDrawer(
-                      onTap: () {},
+                      onTap: settingTap,
                       label: 'Pengaturan',
                     ),
                   ),
@@ -151,6 +173,8 @@ class DrawerCustom extends StatelessWidget {
                       onPressed: () async {
                         final pref = await SharedPreferences.getInstance();
                         await pref.remove(tokenPrefKey);
+                        BlocProvider.of<LoginBloc>(context)
+                            .add(CheckLoginEvent());
                         Navigator.of(context)
                             .pushReplacementNamed(LoginScreen.route);
                       },

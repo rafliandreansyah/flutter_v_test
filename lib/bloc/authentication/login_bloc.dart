@@ -42,6 +42,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         String? token = pref.getString(tokenPrefKey);
         if (token != null) {
           emit(LoginRedirect());
+        } else {
+          emit(LoginInitial());
         }
       }
     });

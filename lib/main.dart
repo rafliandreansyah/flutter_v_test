@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_v_test/bloc/authentication/login_bloc.dart';
-import 'package:flutter_v_test/screen/home_screen.dart';
+import 'package:flutter_v_test/bloc/bloc/navigation_bloc.dart';
 import 'package:flutter_v_test/screen/login_screen.dart';
+import 'package:flutter_v_test/screen/main_screen.dart';
 import 'package:flutter_v_test/screen/register_screen.dart';
 import 'package:flutter_v_test/shared/colors.dart';
 
@@ -13,6 +14,9 @@ void main() {
       providers: [
         BlocProvider<LoginBloc>(
           create: (BuildContext context) => LoginBloc(),
+        ),
+        BlocProvider<NavigationBloc>(
+          create: (BuildContext context) => NavigationBloc(),
         ),
       ],
       child: const MyApp(),
@@ -39,7 +43,7 @@ class MyApp extends StatelessWidget {
       routes: {
         LoginScreen.route: (context) => const LoginScreen(),
         RegisterScreen.route: (context) => const RegisterScreen(),
-        HomeScreen.route: (context) => const HomeScreen(),
+        MainScreen.route: (context) => const MainScreen(),
       },
       builder: EasyLoading.init(),
     );

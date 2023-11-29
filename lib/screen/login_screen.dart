@@ -3,7 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_v_test/model/login_request.dart';
-import 'package:flutter_v_test/screen/home_screen.dart';
+import 'package:flutter_v_test/screen/main_screen.dart';
 import 'package:flutter_v_test/screen/register_screen.dart';
 import 'package:flutter_v_test/widget/text_copy_right.dart';
 import 'package:flutter_v_test/widget/text_field_default.dart';
@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   EasyLoading.dismiss();
                   SchedulerBinding.instance.addPostFrameCallback((_) {
                     Navigator.of(context).pushReplacementNamed(
-                      HomeScreen.route,
+                      MainScreen.route,
                     );
                   });
                 } else if (state is LoginError) {
@@ -67,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 if (state is LoginRedirect) {
                   SchedulerBinding.instance.addPostFrameCallback((_) {
                     Navigator.of(context).pushReplacementNamed(
-                      HomeScreen.route,
+                      MainScreen.route,
                     );
                   });
                   return const Column(
