@@ -17,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
   List<bool> isSelected = [true, false];
   List<String> titles = ['Satuan', 'Paket Pemeriksaan'];
 
@@ -441,8 +442,17 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     return Scaffold(
-      drawer: const DrawerCustom(),
+      endDrawer: const DrawerCustom(),
+      key: _key,
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            _key.currentState!.openEndDrawer();
+          },
+          icon: const Icon(
+            Icons.menu,
+          ),
+        ),
         actions: [
           IconButton(
             icon: Image.asset(

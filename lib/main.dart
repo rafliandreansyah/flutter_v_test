@@ -35,9 +35,9 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
       ),
-      initialRoute: '/',
+      initialRoute: LoginScreen.route,
       routes: {
-        '/': (context) => const LoginScreen(),
+        LoginScreen.route: (context) => const LoginScreen(),
         RegisterScreen.route: (context) => const RegisterScreen(),
         HomeScreen.route: (context) => const HomeScreen(),
       },

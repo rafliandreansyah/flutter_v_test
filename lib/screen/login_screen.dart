@@ -10,14 +10,13 @@ import 'package:flutter_v_test/widget/text_field_default.dart';
 import 'package:flutter_v_test/widget/text_field_login_password.dart';
 import 'package:flutter_v_test/widget/button_primary.dart';
 import 'package:flutter_v_test/widget/text_greeting_banner.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../bloc/authentication/login_bloc.dart';
 import '../widget/text_switch_login_register.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
-
+  static const route = '/';
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
