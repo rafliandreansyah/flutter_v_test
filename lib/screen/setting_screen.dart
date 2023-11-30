@@ -5,9 +5,13 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Setting Screen,',
+    return const SizedBox(
+      width: double.infinity,
+      height: 500,
+      child: Center(
+        child: Text(
+          'Setting Screen,',
+        ),
       ),
     );
   }

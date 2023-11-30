@@ -8,6 +8,7 @@ Color colorOrange = const Color(0xFFFF7200);
 Color colorLightGreen = const Color(0xFFB3FFCB);
 Color colorGrey = const Color(0xFF6A6A6A);
 Color colorRed = const Color(0xFFEB0004);
+Color colorBlack = const Color(0xFF333333);
 
 var kColorScheme = ColorScheme.fromSeed(
   seedColor: colorPrimary,

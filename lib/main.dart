@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_v_test/bloc/authentication/login_bloc.dart';
-import 'package:flutter_v_test/bloc/bloc/navigation_bloc.dart';
+import 'package:flutter_v_test/bloc/navigation/navigation_bloc.dart';
 import 'package:flutter_v_test/screen/login_screen.dart';
 import 'package:flutter_v_test/screen/main_screen.dart';
 import 'package:flutter_v_test/screen/register_screen.dart';

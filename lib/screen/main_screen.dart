@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_v_test/bloc/bloc/navigation_bloc.dart';
+import 'package:flutter_v_test/bloc/navigation/navigation_bloc.dart';
 import 'package:flutter_v_test/screen/home_screen.dart';
 import 'package:flutter_v_test/screen/profile_screen.dart';
 import 'package:flutter_v_test/screen/setting_screen.dart';
