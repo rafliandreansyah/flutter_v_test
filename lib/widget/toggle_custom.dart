@@ -2,23 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_v_test/shared/colors.dart';
 import 'package:flutter_v_test/shared/fonts.dart';
 
-class ToggleCustom extends StatefulWidget {
+class ToggleCustom extends StatelessWidget {
   final List<bool> isSelected;
   final List<String> titles;
+  final Function(int index) onPressed;
   const ToggleCustom({
     super.key,
     required this.isSelected,
     required this.titles,
+    required this.onPressed,
   });
 
-  @override
-  State<ToggleCustom> createState() => _ToggleCustomState();
-}
-
-class _ToggleCustomState extends State<ToggleCustom> {
   List<Widget> generateServiceType() {
     List<Widget> serviceWidget = [];
-    for (var i = 0; i < widget.isSelected.length; i++) {
+    for (var i = 0; i < isSelected.length; i++) {
       serviceWidget.add(
         Container(
           padding: const EdgeInsets.symmetric(
@@ -26,12 +23,12 @@ class _ToggleCustomState extends State<ToggleCustom> {
             vertical: 8,
           ),
           decoration: BoxDecoration(
-            color: widget.isSelected[i] ? colorSecondary : null,
+            color: isSelected[i] ? colorSecondary : null,
             borderRadius: BorderRadius.circular(50),
           ),
           child: Text(
-            widget.titles[i],
-            style: widget.isSelected[i]
+            titles[i],
+            style: isSelected[i]
                 ? proximaSemiBold.copyWith(
                     fontSize: 14,
                   )
@@ -76,15 +73,8 @@ class _ToggleCustomState extends State<ToggleCustom> {
         fillColor: Colors.transparent,
         borderColor: Colors.transparent,
         splashColor: Colors.transparent,
-        onPressed: (index) {
-          setState(() {
-            // The button that is tapped is set to true, and the others to false.
-            for (int i = 0; i < widget.isSelected.length; i++) {
-              widget.isSelected[i] = i == index;
-            }
-          });
-        },
-        isSelected: widget.isSelected,
+        onPressed: onPressed,
+        isSelected: isSelected,
         children: generateServiceType(),
       ),
     );

@@ -6,6 +6,7 @@ import 'package:flutter_v_test/screen/profile_screen.dart';
 import 'package:flutter_v_test/screen/setting_screen.dart';
 import 'package:flutter_v_test/widget/banner_notification.dart';
 import 'package:flutter_v_test/widget/drawer.dart';
+import 'package:flutter_v_test/widget/toggle_custom.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -17,6 +18,8 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+  final titleToggle = ['Profiles', 'Settings'];
+  final isSelectedToggle = [true, false];
 
   @override
   Widget build(BuildContext context) {
@@ -74,10 +77,38 @@ class _MainScreenState extends State<MainScreen> {
               ),
               child: BlocBuilder<NavigationBloc, NavigationState>(
                 builder: (context, state) {
-                  if (state is NavigationProfiles) {
-                    return const ProfileScreen();
-                  } else if (state is NavigationSettings) {
-                    return const SettingScreen();
+                  if (state is NavigationProfiles ||
+                      state is NavigationSettings) {
+                    if (state is NavigationProfiles) {
+                      isSelectedToggle[0] = true;
+                      isSelectedToggle[1] = false;
+                    } else {
+                      isSelectedToggle[0] = false;
+                      isSelectedToggle[1] = true;
+                    }
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ToggleCustom(
+                          isSelected: isSelectedToggle,
+                          titles: const [
+                            'Profile Saya',
+                            'Pengaturan',
+                          ],
+                          onPressed: (index) {
+                            if (index == 0) {
+                              BlocProvider.of<NavigationBloc>(context)
+                                  .add(NavigationProfilesEvent());
+                            } else {
+                              BlocProvider.of<NavigationBloc>(context)
+                                  .add(NavigationSettingsEvent());
+                            }
+                          },
+                        ),
+                        if (state is NavigationProfiles) const ProfileScreen(),
+                        if (state is NavigationSettings) const SettingScreen(),
+                      ],
+                    );
                   } else {
                     return const HomeScreen();
                   }

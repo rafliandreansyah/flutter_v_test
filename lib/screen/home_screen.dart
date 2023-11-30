@@ -523,6 +523,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ToggleCustom(
           isSelected: isSelected,
           titles: titles,
+          onPressed: (index) {
+            // The button that is tapped is set to true, and the others to false.
+            for (int i = 0; i < isSelected.length; i++) {
+              isSelected[i] = i == index;
+            }
+          },
         ),
         const SizedBox(
           height: 40,
